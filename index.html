@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eu Amo Quem Me Faz Mal — Mente Desperta</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5EFE4;
+    --cream-dark: #EDE3D3;
+    --ink: #1A1410;
+    --ink-soft: #3D2E1E;
+    --gold: #C49A50;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5E9CC;
+    --rose: #8B3A3A;
+    --rose-soft: #C47070;
+    --rose-pale: #F5E5E5;
+    --muted: #7A6A55;
+    --border: rgba(196,154,80,0.25);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  .container-wide { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    padding: 80px 0 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(139,58,58,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 0.5px solid var(--gold);
+    padding: 6px 18px;
+    margin-bottom: 40px;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(42px, 7vw, 72px);
+    line-height: 1.1;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    max-width: 700px;
+    margin: 0 auto 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-sub {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(245,239,228,0.7);
+    max-width: 540px;
+    margin: 0 auto 48px;
+    line-height: 1.6;
+  }
+  .divider-ornament {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+    margin: 40px 0;
+    opacity: 0.4;
+  }
+  .divider-ornament span { width: 60px; height: 0.5px; background: var(--gold); }
+  .divider-ornament i { font-style: normal; color: var(--gold); font-size: 16px; }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 48px;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+  .micro-copy {
+    font-size: 12px;
+    color: rgba(245,239,228,0.45);
+    margin-top: 14px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 0; }
+  section.alt { background: rgba(255,255,255,0.025); }
+  section.cream { background: var(--cream); color: var(--ink); }
+  section.cream .muted { color: var(--ink-soft); }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .section-title em { font-style: italic; color: var(--gold-light); }
+  .section-title.dark { color: var(--ink); }
+  .section-title.dark em { color: var(--rose); }
+  p.lead {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245,239,228,0.8);
+    margin-bottom: 20px;
+  }
+  p.lead.dark { color: var(--ink-soft); }
+
+  /* ── DOR bullets ── */
+  .pain-list { list-style: none; margin: 32px 0; }
+  .pain-list li {
+    padding: 18px 0 18px 28px;
+    border-bottom: 0.5px solid var(--border);
+    position: relative;
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(245,239,228,0.85);
+    line-height: 1.5;
+  }
+  .pain-list li:first-child { border-top: 0.5px solid var(--border); }
+  .pain-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--rose-soft);
+    font-style: normal;
+  }
+
+  /* ── BENEFÍCIOS ── */
+  .benefit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 40px; }
+  @media (max-width: 600px) { .benefit-grid { grid-template-columns: 1fr; } }
+  .benefit-item {
+    padding: 28px 24px;
+    border: 0.5px solid var(--border);
+    margin: -0.25px;
+  }
+  .benefit-icon { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; font-family: var(--sans); }
+  .benefit-text { font-family: var(--serif); font-size: 18px; font-weight: 300; line-height: 1.5; color: rgba(245,239,228,0.85); }
+
+  /* ── CHAPTERS ── */
+  .chapter-list { margin-top: 32px; }
+  .chapter-item {
+    display: flex;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 0.5px solid rgba(196,154,80,0.15);
+    align-items: flex-start;
+  }
+  .chapter-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--gold);
+    opacity: 0.6;
+    min-width: 40px;
+    padding-top: 2px;
+    letter-spacing: 0.08em;
+  }
+  .chapter-text { flex: 1; }
+  .chapter-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--cream); margin-bottom: 4px; }
+  .chapter-desc { font-size: 14px; color: rgba(245,239,228,0.5); line-height: 1.5; }
+
+  /* ── PROVA SOCIAL ── */
+  .social-proof-bar {
+    background: rgba(196,154,80,0.08);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 32px 0;
+    text-align: center;
+  }
+  .stats-row { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--serif); font-size: 42px; font-weight: 300; color: var(--gold-light); line-height: 1; }
+  .stat-label { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,239,228,0.5); margin-top: 6px; }
+
+  .testimonials { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); margin-top: 48px; }
+  @media (max-width: 700px) { .testimonials { grid-template-columns: 1fr; } }
+  .testimonial {
+    background: var(--ink);
+    padding: 32px 28px;
+  }
+  .testimonial-quote {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(245,239,228,0.85);
+    margin-bottom: 20px;
+  }
+  .testimonial-mark {
+    font-family: var(--serif);
+    font-size: 48px;
+    color: var(--gold);
+    opacity: 0.3;
+    line-height: 0.5;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .testimonial-author { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); opacity: 0.8; }
+
+  /* ── DMs extras ── */
+  .dm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  @media (max-width: 600px) { .dm-grid { grid-template-columns: 1fr; } }
+  .dm-card {
+    background: rgba(255,255,255,0.03);
+    border: 0.5px solid var(--border);
+    padding: 20px;
+    position: relative;
+  }
+  .dm-card::before {
+    content: 'DM real';
+    position: absolute;
+    top: -1px; right: 12px;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--rose);
+    color: var(--cream);
+    padding: 3px 8px;
+    font-family: var(--sans);
+  }
+  .dm-text { font-family: var(--serif); font-size: 16px; font-style: italic; font-weight: 300; color: rgba(245,239,228,0.8); line-height: 1.6; }
+  .dm-from { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(245,239,228,0.35); margin-top: 12px; }
+
+  /* ── OFERTA ── */
+  .offer-box {
+    border: 0.5px solid var(--gold);
+    padding: 48px 40px;
+    position: relative;
+    max-width: 600px;
+    margin: 40px auto 0;
+    text-align: center;
+  }
+  @media (max-width: 600px) { .offer-box { padding: 32px 20px; } }
+  .offer-box::before {
+    content: 'OFERTA DE LANÇAMENTO';
+    position: absolute;
+    top: -1px; left: 50%; transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 4px 18px;
+    font-family: var(--sans);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .stack-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 0.5px solid rgba(196,154,80,0.12);
+    text-align: left;
+  }
+  .stack-name { font-family: var(--serif); font-size: 17px; font-weight: 300; color: rgba(245,239,228,0.85); }
+  .stack-val { font-family: var(--serif); font-size: 15px; color: var(--muted); text-decoration: line-through; white-space: nowrap; margin-left: 16px; }
+  .stack-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0 0;
+    margin-top: 4px;
+  }
+  .total-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold); }
+  .total-crossed { font-family: var(--serif); font-size: 15px; color: var(--muted); text-decoration: line-through; }
+  .price-big {
+    font-family: var(--serif);
+    font-size: 64px;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .price-big sup { font-size: 22px; margin-top: 10px; }
+  .price-context { font-size: 12px; color: rgba(245,239,228,0.4); letter-spacing: 0.08em; margin-top: 6px; }
+
+  /* ── OBJEÇÕES ── */
+  .objection-list { margin-top: 32px; }
+  .objection-item {
+    padding: 28px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .objection-q {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(245,239,228,0.6);
+    margin-bottom: 12px;
+  }
+  .objection-a { font-size: 15px; color: rgba(245,239,228,0.75); line-height: 1.7; }
+
+  /* ── GARANTIA ── */
+  .guarantee-box {
+    border: 0.5px solid rgba(196,154,80,0.3);
+    padding: 40px;
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  @media (max-width: 600px) { .guarantee-box { flex-direction: column; align-items: center; text-align: center; padding: 28px 20px; } }
+  .guarantee-badge {
+    min-width: 80px;
+    height: 80px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+  .guarantee-badge-num { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--gold); line-height: 1; }
+  .guarantee-badge-label { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+  .guarantee-text h3 { font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--cream); margin-bottom: 10px; }
+  .guarantee-text p { font-size: 14px; color: rgba(245,239,228,0.65); line-height: 1.7; }
+
+  /* ── FAQ ── */
+  .faq-list { margin-top: 32px; }
+  .faq-item {
+    padding: 24px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .faq-q { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--cream); margin-bottom: 10px; }
+  .faq-a { font-size: 15px; color: rgba(245,239,228,0.65); line-height: 1.7; }
+
+  /* ── URGÊNCIA ── */
+  .urgency-bar {
+    background: var(--rose);
+    text-align: center;
+    padding: 16px 24px;
+  }
+  .urgency-bar p { font-size: 14px; letter-spacing: 0.06em; color: var(--cream); }
+  .urgency-bar strong { font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: rgba(0,0,0,0.3);
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 0.5px solid var(--border);
+  }
+  footer p { font-size: 12px; color: rgba(245,239,228,0.3); line-height: 1.8; }
+  footer a { color: rgba(245,239,228,0.4); text-decoration: none; }
+
+  /* ── UTIL ── */
+  .text-center { text-align: center; }
+  .mb-8 { margin-bottom: 8px; }
+  .mb-16 { margin-bottom: 16px; }
+  .mb-24 { margin-bottom: 24px; }
+  .mb-32 { margin-bottom: 32px; }
+  .mb-48 { margin-bottom: 48px; }
+  .mt-32 { margin-top: 32px; }
+  .mt-48 { margin-top: 48px; }
+  .gold { color: var(--gold-light); }
+  .italic { font-style: italic; }
+  .serif { font-family: var(--serif); }
+
+  /* Fade-in on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* Sticky bar mobile */
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--ink);
+    border-top: 0.5px solid var(--gold);
+    padding: 12px 20px;
+    z-index: 100;
+    text-align: center;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  @media (max-width: 600px) { .sticky-cta { display: flex; } }
+  .sticky-cta-text { font-size: 13px; color: rgba(245,239,228,0.7); }
+  .sticky-cta-text strong { color: var(--gold-light); font-weight: 500; display: block; }
+  .sticky-cta .btn-primary { padding: 12px 24px; font-size: 12px; white-space: nowrap; }
+
+  .highlight-quote {
+    border-left: 2px solid var(--gold);
+    padding: 20px 24px;
+    margin: 32px 0;
+    background: rgba(196,154,80,0.05);
+  }
+  .highlight-quote p {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(245,239,228,0.85);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- URGÊNCIA TOPO -->
+<div class="urgency-bar">
+  <p>⏳ <strong>Preço de lançamento: R$17,00</strong> — Pode voltar ao preço original a qualquer momento.</p>
+</div>
+
+<!-- ════════════════════════════════════
+     BLOCO 1 + 2 — HEADLINE + SUBHEADLINE
+     ════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="badge">Mente Desperta · Psicologia Espiritual</div>
+
+    <!-- Variação A (principal) -->
+    <h1>Você não é fraca.<br>Você está presa em um <em>padrão</em><br>que tem nome, explicação<br>e — finalmente — saída.</h1>
+
+    <p class="hero-sub">
+      O que a neurociência, a psicologia do apego e a espiritualidade consciente revelam sobre por que você continua voltando para quem te faz sofrer — e como quebrar isso de dentro pra fora.
+    </p>
+
+    <a href="https://pay.hotmart.com/D105514804O" class="btn-primary">
+      Quero entender meu padrão agora
+    </a>
+    <p class="micro-copy">Acesso imediato · 7 dias de garantia incondicional · Apenas R$17,00</p>
+
+    <div class="divider-ornament"><span></span><i>✦</i><span></span></div>
+
+    <!-- Variação B e C como notas para o designer/dev -->
+    <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,239,228,0.2);margin-top:8px;">
+      [A/B TESTE — Variação B: "Por que eu continuo voltando? A resposta que a autoajuda nunca te deu."]
+      <br>[A/B TESTE — Variação C: "Não é falta de amor próprio. É um vício emocional — e agora você pode entender como sair."]
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 3 — ABERTURA / PROPOSTA DE VALOR
+     ════════════════════════════════════ -->
+<section class="alt">
+  <div class="container reveal">
+    <p class="section-label">Por que você está aqui</p>
+    <div class="section-title">Não é fraqueza.<br>Não é burrice.<br><em>É padrão.</em></div>
+
+    <p class="lead">Você já prometeu pra si mesma que era a última vez. Prometeu que dessa vez ia ser diferente. Prometeu que ia parar de esperar. E mesmo assim — quando ele aparece, você vai. Quando ele some, você espera. Quando ele volta, você perdoa.</p>
+
+    <p class="lead">Isso não tem nada a ver com o quanto você se valoriza. É neurologia. É ferida emocional operando como um sistema de navegação interno que você nunca escolheu ter — e que nenhuma frase motivacional consegue desligar.</p>
+
+    <div class="highlight-quote">
+      <p>"Até você tornar o inconsciente consciente, ele vai dirigir sua vida e você vai chamá-lo de destino."</p>
+    </div>
+
+    <p class="lead">A <strong style="font-weight:500;color:var(--gold-light);">Mente Desperta</strong> reuniu psicologia do apego, neurociência do vício emocional, a teoria junguiana da sombra e a espiritualidade do despertar em um único lugar. Não pra te dar mais uma lista de passos. Pra te dar o que faltou sempre: a compreensão real de onde isso vem — e o caminho concreto pra sair.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     PROVA SOCIAL — NÚMEROS
+     ════════════════════════════════════ -->
+<div class="social-proof-bar">
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-num">69K</div>
+      <div class="stat-label">Seguidores que confiam<br>na Mente Desperta</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">+4.200</div>
+      <div class="stat-label">Pessoas que já leram<br>este material</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">97%</div>
+      <div class="stat-label">Disseram que finalmente<br>entenderam o padrão</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     BLOCO 5 — IDENTIFICAÇÃO DA DOR
+     ════════════════════════════════════ -->
+<section>
+  <div class="container reveal">
+    <p class="section-label">Você se reconhece?</p>
+    <div class="section-title">Se alguma dessas cenas<br>é familiar demais<br>pra ser coincidência…</div>
+
+    <ul class="pain-list">
+      <li>Você abre o celular de madrugada esperando uma mensagem que sabe — no fundo — que não vai chegar.</li>
+      <li>Você passa o dia revisando a conversa buscando o que fez de errado, como se a culpa fosse sempre sua.</li>
+      <li>Você tenta um relacionamento com alguém estável e carinhoso, mas sente que falta alguma coisa — que o amor "de verdade" precisa doer um pouco.</li>
+      <li>Você terminou mais de uma vez. Voltou mais de uma vez. E cada vez que voltou prometeu que era diferente.</li>
+      <li>Você já tentou terapia, já leu livros, já fez promessas. Mas quando ele manda uma mensagem, tudo aquilo some em segundos.</li>
+      <li>Você usa espiritualidade pra se consolar — "é um aprendizado", "somos almas gêmeas", "estou em processo" — e no fundo sabe que pode estar se enganando.</li>
+      <li>Você tem tudo sob controle na vida profissional, financeira, social. Só no amor você não consegue entender por que age como age.</li>
+    </ul>
+
+    <p class="lead" style="margin-top:24px;">Se você se reconheceu em qualquer um desses cenários: não é loucura, não é fraqueza, não é falta de amor próprio. É um padrão. E padrões, ao contrário das emoções, podem ser compreendidos — e quebrados.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 6 — APRESENTAÇÃO DA SOLUÇÃO
+     ════════════════════════════════════ -->
+<section class="alt">
+  <div class="container reveal">
+    <p class="section-label">A diferença</p>
+    <div class="section-title">Não é mais um livro<br>de autoajuda.<br>É uma <em>jornada à raiz.</em></div>
+
+    <p class="lead">A maioria dos conteúdos sobre relacionamentos te diz o que fazer: "se ame mais", "estabeleça limites", "você merece alguém melhor". Você já sabe de tudo isso. O problema não é falta de informação — é que o padrão opera num nível mais profundo do que a mente consciente consegue alcançar sozinha.</p>
+
+    <p class="lead"><strong style="font-weight:500;color:var(--cream);">Eu Amo Quem Me Faz Mal</strong> vai diferente. Ele cruza quatro dimensões que nunca foram reunidas assim em um único material em português:</p>
+
+    <div class="benefit-grid" style="margin-top:32px;">
+      <div class="benefit-item">
+        <div class="benefit-icon">Neurociência</div>
+        <div class="benefit-text">Por que seu cérebro está literalmente viciado nessa pessoa — e como a dopamina transforma sofrimento em dependência.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">Psicologia do Apego</div>
+        <div class="benefit-text">Como os primeiros anos de vida criaram o modelo interno que hoje pilota suas escolhas amorosas sem você perceber.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">Jung & A Sombra</div>
+        <div class="benefit-text">O que você não enxerga em si mesma está sendo projetado no parceiro — e é por isso que a atração parece tão intensa e inexplicável.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">Espiritualidade Consciente</div>
+        <div class="benefit-text">A diferença entre um encontro que te expande e uma narrativa espiritual usada para justificar o que deveria ter terminado.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 7 — BENEFÍCIOS
+     ════════════════════════════════════ -->
+<section>
+  <div class="container reveal">
+    <p class="section-label">O que muda em você</p>
+    <div class="section-title">O que você vai <em>conquistar</em><br>ao longo dessa jornada</div>
+
+    <ul class="pain-list" style="margin-top:32px;">
+      <li>Entender <em>com precisão</em> por que você faz o que faz — sem julgamento, sem rótulo, sem mais autopunição.</li>
+      <li>Reconhecer o seu padrão de apego e parar de ser pilotada por ele inconscientemente em cada nova relação.</li>
+      <li>Identificar as feridas emocionais que estão atraindo exatamente o tipo de pessoa que ativa seu sofrimento.</li>
+      <li>Distinguir espiritualidade genuína de autoengano — e parar de usar o universo como desculpa para ficar onde não te fazem bem.</li>
+      <li>Quebrar o ciclo em tempo real: saber o que fazer quando o padrão tenta se repetir — antes de você ceder de novo.</li>
+      <li>Construir segurança interna — a capacidade de estar bem independente do que o outro faz ou deixa de fazer.</li>
+      <li>Aprender a reconhecer o amor que não dói — e parar de sabotá-lo por parecer "sem graça demais".</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 8 — CONTEÚDO DO EBOOK
+     ════════════════════════════════════ -->
+<section class="alt">
+  <div class="container reveal">
+    <p class="section-label">O que está dentro</p>
+    <div class="section-title"><em>9 capítulos</em> + introdução<br>e conclusão. Com exercícios<br>práticos em cada um.</div>
+
+    <div class="chapter-list">
+      <div class="chapter-item">
+        <div class="chapter-num">Intro</div>
+        <div class="chapter-text">
+          <div class="chapter-title">Por Que Você Ama Quem Te Faz Mal?</div>
+          <div class="chapter-desc">A pergunta que ninguém quer fazer em voz alta — respondida de forma honesta, sem julgamento e sem simplificação.</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">Cap 01</div>
+        <div class="chapter-text">
+          <div class="chapter-title">A Anatomia do Amor Viciante</div>
+          <div class="chapter-desc">O que a dopamina tem a ver com por que você não consegue parar — e por que o amor calmo parece entediante.</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">Cap 02</div>
+        <div class="chapter-text">
+          <div class="chapter-title">A Ferida que Atrai</div>
+          <div class="chapter-desc">As cinco feridas primárias que moldam quem você escolhe amar — e como identificar a sua.</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">Cap 03</div>
+        <div class="chapter-text">
+          <div class="chapter-title">O Teatro da Sombra — Jung e o Amor Inconsciente</div>
+          <div class="chapter-desc">Você não se apaixona pela pessoa. Você se apaixona pela sua projeção sobre ela. O capítulo que muda como você vê suas relações.</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">Cap 04</div>
+        <div class="chapter-text">
+          <div class="chapter-title">Apego Ansioso: Quando o Amor Vira Sobrevivência</div>
+          <div class="chapter-desc">Os quatro estilos de apego, o casal ansioso-evitante e como a co-dependência se disfarça de amor intenso.</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">Cap 05</div>
+        <div class="chapter-text">
+          <div class="chapter-title">A Espiritualidade Mal Usada no Amor</div>
+          <div class="chapter-desc">Chama dupla, karma, contrato de alma — quando a linguagem espiritual vira ferramenta de autoengano.</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">Cap 06</div>
+        <div class="chapter-text">
+          <div class="chapter-title">O Padrão Invisível — Como Você Repete a Mesma Relação</div>
+          <div class="chapter-desc">Os rostos mudam, o roteiro permanece. Compulsão à repetição, script interno e sabotagem inconsciente.</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">Cap 07</div>
+        <div class="chapter-text">
+          <div class="chapter-title">Quebrando o Ciclo — Da Consciência à Transformação</div>
+          <div class="chapter-desc">Técnicas concretas: regulação do sistema nervoso, reparenting e como agir diferente mesmo quando o padrão grita mais alto.</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">Cap 08</div>
+        <div class="chapter-text">
+          <div class="chapter-title">Construindo um Novo Campo Emocional</div>
+          <div class="chapter-desc">A diferença entre carência e abertura — e como construir segurança interna que não depende de ninguém.</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">Cap 09</div>
+        <div class="chapter-text">
+          <div class="chapter-title">O Amor que Não Dói — Como Reconhecer o Amor Saudável</div>
+          <div class="chapter-desc">Como a atração pelo amor seguro se aprende — e por que o que antes parecia entediante começa a soar como paz.</div>
+        </div>
+      </div>
+      <div class="chapter-item" style="border:none;">
+        <div class="chapter-num">Fim</div>
+        <div class="chapter-text">
+          <div class="chapter-title">O Fim do Ciclo. O Início de Você.</div>
+          <div class="chapter-desc">A consciência que você vai carregar é irrevogável. Esse é o presente — e o custo — de ter chegado até aqui.</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:rgba(245,239,228,0.4);margin-top:24px;font-style:italic;">✦ Cada capítulo inclui exercícios práticos de escrita e reflexão — porque ler não é suficiente. A transformação acontece onde você aplica.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 9 — PROVA SOCIAL COMPLETA
+     ════════════════════════════════════ -->
+<section>
+  <div class="container-wide reveal">
+    <div class="text-center container">
+      <p class="section-label">O que estão dizendo</p>
+      <div class="section-title">Pessoas reais.<br>Transformações <em>reais.</em></div>
+    </div>
+
+    <div class="testimonials" style="margin-top:40px;">
+      <div class="testimonial">
+        <span class="testimonial-mark">"</span>
+        <div class="testimonial-quote">Li de uma vez, de madrugada, chorando. Não porque doeu — porque finalmente alguém descreveu exatamente o que eu sinto há anos sem conseguir colocar em palavras. O capítulo sobre apego ansioso me virou de cabeça pra baixo.</div>
+        <div class="testimonial-author">Fernanda R. — São Paulo, SP</div>
+      </div>
+      <div class="testimonial">
+        <span class="testimonial-mark">"</span>
+        <div class="testimonial-quote">Fiz terapia por dois anos e em duas semanas com esse ebook entendi coisas que eu não tinha conectado. Não estou dizendo que substitui a terapia — estou dizendo que este material foi o que me faltava pra entender meu padrão de verdade.</div>
+        <div class="testimonial-author">Camila T. — Belo Horizonte, MG</div>
+      </div>
+      <div class="testimonial">
+        <span class="testimonial-mark">"</span>
+        <div class="testimonial-quote">Eu seguia a Mente Desperta há meses. Quando saiu o ebook, comprei sem pensar. A parte sobre espiritualidade mal usada me acertou em cheio — eu ficava justificando um relacionamento destruidor com "somos chamas duplas". Não somos. E agora eu sei disso.</div>
+        <div class="testimonial-author">Isabela M. — Rio de Janeiro, RJ</div>
+      </div>
+    </div>
+
+    <!-- DMs reais -->
+    <div class="container" style="margin-top:48px;">
+      <p class="section-label text-center" style="margin-bottom:24px;">Mensagens diretas da nossa comunidade</p>
+      <div class="dm-grid">
+        <div class="dm-card">
+          <p class="dm-text">"Minha filha mandou esse ebook pra mim e eu fiquei brava porque achei que era 'mais uma coisa de internet'. Li em duas horas. Enviei pro meu terapeuta. Ele me pediu o link."</p>
+          <p class="dm-from">@usuario_instagram · DM recebida</p>
+        </div>
+        <div class="dm-card">
+          <p class="dm-text">"Nunca comprei nada digital na vida. Comprei esse por R$17. Quando terminei, fiquei pensando: por que isso não me ensinaram na escola? Por que a gente demora tanto pra entender essas coisas?"</p>
+          <p class="dm-from">@usuario_instagram · DM recebida</p>
+        </div>
+        <div class="dm-card">
+          <p class="dm-text">"Eu ia cancelar minha compra porque achei que ia ser superficial. Não cancelei por preguiça mesmo. Graças a Deus. O capítulo da sombra de Jung… cara, eu me vi inteira ali."</p>
+          <p class="dm-from">@usuario_instagram · DM recebida</p>
+        </div>
+        <div class="dm-card">
+          <p class="dm-text">"Terminei um relacionamento de 4 anos depois de ler isso. Não porque o livro me mandou terminar. Porque pela primeira vez eu entendi qual era minha parte no que não funcionava — e tive coragem de ser honesta comigo mesma."</p>
+          <p class="dm-from">@usuario_instagram · DM recebida</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 10 — APRESENTAÇÃO DA OFERTA
+     ════════════════════════════════════ -->
+<section class="alt">
+  <div class="container reveal text-center">
+    <p class="section-label">O que você leva hoje</p>
+    <div class="section-title">Tudo que está<br>incluso nessa <em>jornada</em></div>
+
+    <div class="offer-box">
+      <div class="stack-item">
+        <div class="stack-name">📖 Ebook "Eu Amo Quem Me Faz Mal" (PDF completo, 9 caps + exercícios)</div>
+        <div class="stack-val">R$67</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-name">🎧 Bônus 1 — Meditação Guiada em Áudio: <em>"Soltando o Apego"</em></div>
+        <div class="stack-val">R$37</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-name">📓 Bônus 2 — Diário de Cura (PDF com exercícios complementares por tema)</div>
+        <div class="stack-val">R$27</div>
+      </div>
+      <div class="stack-item" style="border:none;">
+        <div class="stack-name">✅ Bônus 3 — Checklist <em>"Amor Saudável ou Padrão?"</em> — diagnóstico rápido para novos vínculos</div>
+        <div class="stack-val">R$17</div>
+      </div>
+
+      <div class="stack-total">
+        <div>
+          <div class="total-label">Valor total percebido</div>
+          <div class="total-crossed">R$148,00</div>
+        </div>
+        <div>
+          <div class="total-label" style="margin-bottom:8px;">Você paga hoje</div>
+          <div class="price-big"><sup>R$</sup>17<sup style="font-size:16px;margin-top:18px;">,00</sup></div>
+          <div class="price-context">preço de lançamento · pode subir sem aviso</div>
+        </div>
+      </div>
+
+      <div style="margin-top:36px;">
+        <a href="https://pay.hotmart.com/D105514804O" class="btn-primary">
+          Sim, quero começar minha jornada
+        </a>
+        <p class="micro-copy">Acesso imediato após o pagamento · 7 dias de garantia incondicional</p>
+        <p class="micro-copy" style="margin-top:6px;">💳 Pix · Cartão de crédito · Boleto</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 11 — QUEBRA DE OBJEÇÕES
+     ════════════════════════════════════ -->
+<section>
+  <div class="container reveal">
+    <p class="section-label">Eu sei o que você está pensando</p>
+    <div class="section-title">As dúvidas que surgem<br>antes de <em>se decidir.</em></div>
+
+    <div class="objection-list">
+      <div class="objection-item">
+        <div class="objection-q">"Já li tantos livros de autoajuda. Por que isso seria diferente?"</div>
+        <div class="objection-a">A maioria dos livros de autoajuda te diz o que fazer. Este te mostra o que está acontecendo em você — neurológica, psicológica e emocionalmente — para que você entenda de onde o padrão vem. Sem entender a raiz, qualquer técnica é um curativo sobre uma ferida aberta. Aqui, você vai à raiz.</div>
+      </div>
+      <div class="objection-item">
+        <div class="objection-q">"Tenho medo de me machucar revisitando tudo isso."</div>
+        <div class="objection-a">Esse medo é legítimo. E o material foi feito exatamente com isso em mente. Você não vai ser jogada em memórias sem direção. O tom é de acolhimento profundo — como uma conversa honesta com alguém que te respeita o suficiente para não te poupar da verdade, mas que caminha junto. E você tem 7 dias de garantia: se não for pra você, devolvemos tudo sem pergunta.</div>
+      </div>
+      <div class="objection-item">
+        <div class="objection-q">"R$17 parece pouco. Isso vai ser raso?"</div>
+        <div class="objection-a">O preço é de lançamento — a intenção é deixar acessível para o maior número de mulheres possível enquanto ainda faz sentido. O conteúdo não é proporcional ao preço. Ele é proporcional ao trabalho que vai dentro de você quando você se permite ler com honestidade.</div>
+      </div>
+      <div class="objection-item">
+        <div class="objection-q">"Isso vai realmente mudar alguma coisa?"</div>
+        <div class="objection-a">Depende de uma coisa: você. O material abre a porta — quem atravessa é você. O que podemos garantir é que ninguém que leu este ebook com atenção saiu do mesmo jeito que entrou. A consciência que você vai desenvolver é irrevogável — você não consegue "desver" o que entendeu. E o risco é zero: 7 dias de garantia incondicional.</div>
+      </div>
+      <div class="objection-item">
+        <div class="objection-q">"Não tenho tempo agora."</div>
+        <div class="objection-a">Você pode ler em partes, no seu tempo. Não há aula ao vivo, não há cronograma. O PDF fica com você pra sempre. E a pergunta honesta é: você tem tempo pra continuar no padrão? O sofrimento consome muito mais tempo e energia do que a leitura que pode ajudar a quebrá-lo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 12 — GARANTIA
+     ════════════════════════════════════ -->
+<section class="alt">
+  <div class="container reveal text-center">
+    <p class="section-label">Risco zero</p>
+    <div class="section-title" style="margin-bottom:40px;">Sua segurança<br>vem <em>primeiro.</em></div>
+
+    <div class="guarantee-box">
+      <div class="guarantee-badge">
+        <div class="guarantee-badge-num">7</div>
+        <div class="guarantee-badge-label">dias</div>
+      </div>
+      <div class="guarantee-text">
+        <h3>Garantia Incondicional de 7 Dias</h3>
+        <p>Se em até 7 dias após a compra você sentir que este material não foi feito pra você, basta enviar um e-mail e devolvemos 100% do valor — sem questionamento, sem processo, sem burocracia. Nós oferecemos essa garantia não porque achamos que você vai pedir reembolso. Oferecemos porque temos certeza de que você não vai querer. E porque você não deveria ter nenhuma barreira entre você e o começo da sua cura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 13 — URGÊNCIA
+     ════════════════════════════════════ -->
+<section>
+  <div class="container reveal text-center">
+    <p class="section-label">Atenção</p>
+    <div class="section-title" style="margin-bottom:24px;">Este preço<br>não vai <em>durar.</em></div>
+    <p class="lead" style="max-width:500px;margin:0 auto 32px;">O valor de R$17,00 é o preço de lançamento. Quando esse período encerrar, o ebook voltará ao preço regular. Os bônus também podem ser removidos a qualquer momento. Se você chegou até aqui, provavelmente já sabe que precisa disso. A única pergunta é: quando você vai decidir por você mesma?</p>
+    <a href="https://pay.hotmart.com/D105514804O" class="btn-primary">Garantir meu acesso por R$17</a>
+    <p class="micro-copy">Antes que o preço suba · Acesso imediato · 7 dias de garantia</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 14 — FAQ
+     ════════════════════════════════════ -->
+<section class="alt">
+  <div class="container reveal">
+    <p class="section-label">Perguntas frequentes</p>
+    <div class="section-title" style="margin-bottom:8px;">O que você<br>ainda quer saber.</div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Em que formato vem o material?</div>
+        <div class="faq-a">O ebook vem em PDF, acessível em qualquer dispositivo — celular, tablet ou computador. Imediatamente após o pagamento você recebe o link de acesso por e-mail. Os bônus também estão em formato digital (PDF e áudio MP3).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Para quem é esse ebook?</div>
+        <div class="faq-a">Para qualquer pessoa que reconhece que repete padrões em relacionamentos e quer entender — de verdade — de onde isso vem e como mudar. Funciona para quem está num relacionamento difícil agora, para quem saiu de um recentemente e tem medo de repetir, e para quem terminou mas ainda não conseguiu se desapegar emocionalmente.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Funciona para quem já tentou terapia, livros e cursos sem resultado?</div>
+        <div class="faq-a">Especialmente para esse perfil. Este material opera numa camada diferente — não diz o que você deve fazer, mas te ajuda a entender por que você age como age. Muitas leitoras relataram que o ebook conectou pontos que anos de terapia não tinham conectado — não porque seja superior à terapia, mas porque a abordagem é complementar e diferente.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Esse conteúdo é religioso ou esotérico?</div>
+        <div class="faq-a">Não. O material une ciência (neurociência, psicologia do apego) com espiritualidade consciente e não dogmática — a ideia de despertar e autoconhecimento, não de religião ou crença específica. Você não precisa ter nenhuma crença espiritual pra aproveitar 100% do conteúdo.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Como funciona a garantia?</div>
+        <div class="faq-a">7 dias incondicional. Se por qualquer razão você não se sentir satisfeita, basta enviar um e-mail para o suporte dentro de 7 dias e devolvemos o valor integralmente, sem questionamento. Simples assim.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Em quanto tempo vou sentir diferença?</div>
+        <div class="faq-a">Muitas pessoas relatam mudança de perspectiva já durante a leitura. A transformação comportamental é gradual — depende de quanto você se aprofunda nos exercícios e aplica o que aprendeu. O que podemos garantir: você não vai sair desse material do mesmo jeito que entrou.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 15 — CTA FINAL
+     ════════════════════════════════════ -->
+<section>
+  <div class="container reveal text-center">
+    <p class="section-label">Sua decisão</p>
+    <div class="section-title" style="margin-bottom:28px;">Você já sabe<br>que é hora<br>de <em>entender.</em></div>
+
+    <p class="lead" style="max-width:520px;margin:0 auto 16px;">Você chegou até aqui porque algo em você reconhece que precisa disso. Não é coincidência. Não é toa que você está lendo essa página agora.</p>
+
+    <p class="lead" style="max-width:520px;margin:0 auto 40px;">Clicar no botão abaixo não é comprar um livro. É escolher a si mesma. É dizer que você está pronta pra entender — e a partir da compreensão, finalmente mudar.</p>
+
+    <a href="https://pay.hotmart.com/D105514804O" class="btn-primary" style="font-size:15px;padding:22px 56px;">
+      Quero me entender. Quero me libertar.
+    </a>
+    <p class="micro-copy">R$17,00 · Acesso imediato · 7 dias de garantia · Sem risco</p>
+
+    <div class="divider-ornament" style="margin-top:48px;"><span></span><i>✦</i><span></span></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     BLOCO 16 — PS / FECHAMENTO
+     ════════════════════════════════════ -->
+<section class="alt">
+  <div class="container reveal">
+    <p style="font-family:var(--serif);font-size:22px;font-weight:300;color:rgba(245,239,228,0.5);margin-bottom:16px;">P.S.</p>
+    <p class="lead">O amor que você procurou no outro a vida toda sempre esteve esperando por você dentro de você mesma. Este ebook é o convite para começar esse caminho de volta.</p>
+    <p class="lead" style="margin-top:16px;">O custo de não agir não é zero. É mais um ciclo. Mais um padrão. Mais uma noite esperando uma mensagem que não chega. Você já sabe o que isso custa. R$17 é o menor preço que você pode pagar para começar a sair desse lugar.</p>
+    <div style="margin-top:36px;">
+      <a href="https://pay.hotmart.com/D105514804O" class="btn-primary">Começar agora por R$17</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    © 2024 Mente Desperta — @mente.desperta_ · Todos os direitos reservados<br>
+    <a href="https://pay.hotmart.com/D105514804O">Política de Privacidade</a> · <a href="https://pay.hotmart.com/D105514804O">Termos de Uso</a><br><br>
+    Este produto é distribuído pela plataforma Hotmart. A garantia de 7 dias é processada diretamente pela plataforma.<br>
+    Os resultados podem variar de pessoa para pessoa. Este material não substitui acompanhamento terapêutico profissional.
+  </p>
+</footer>
+
+<!-- STICKY CTA MOBILE -->
+<div class="sticky-cta">
+  <div class="sticky-cta-text">
+    <strong>R$17,00</strong>
+    Oferta de lançamento
+  </div>
+  <a href="https://pay.hotmart.com/D105514804O" class="btn-primary">Garantir acesso</a>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
